@@ -15,7 +15,7 @@ class UserCreate(BaseModel):
     def popular_domains_only(cls, value: str) -> str:
         domain = value.lower().split("@")[-1]
         if domain not in ALLOWED_DOMAINS:
-            raise ValueError(f"Email domain @{domain} is not supported. Please use one of: {", ".join(sorted(ALLOWED_DOMAINS))}")
+            raise ValueError(f"Email domain @{domain} is not supported. Please use one of: {', '.join(sorted(ALLOWED_DOMAINS))}")
         return value.lower()
 
     password: str
@@ -29,7 +29,7 @@ class UserLogin(BaseModel):
     def popular_domains_only(cls, value: str) -> str:
         domain = value.lower().split("@")[-1]
         if domain not in ALLOWED_DOMAINS:
-            raise ValueError(f"Email domain @{domain} is not supported. Please use one of: {", ".join(sorted(ALLOWED_DOMAINS))}")
+            raise ValueError(f"Email domain @{domain} is not supported. Please use one of: {', '.join(sorted(ALLOWED_DOMAINS))}")
         return value.lower()
     
     password: str
@@ -46,7 +46,7 @@ class UserOut(BaseModel):
 
 class Token(BaseModel):
     access_token: str
-    token_type: str = 'bearer'
+    token_type: str = "bearer"
 
 
 class FeedbackRequest(BaseModel):
